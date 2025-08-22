@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 export default function Footer() {
@@ -96,31 +98,64 @@ export default function Footer() {
     }
   ];
 
+  const footerStyle = {
+    backgroundColor: '#1f2937',
+    color: '#9ca3af'
+  };
+
+  const linkStyle = {
+    color: '#9ca3af',
+    fontSize: '14px',
+    textDecoration: 'none',
+    transition: 'color 0.2s'
+  };
+
+  const titleStyle = {
+    color: '#ffffff',
+    fontWeight: '600',
+    marginBottom: '16px',
+    fontSize: '16px'
+  };
+
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer style={footerStyle}>
       {/* Main Footer Content */}
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
+      <div className="container-custom" style={{ padding: '60px 20px 40px' }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '40px',
+          marginBottom: '40px'
+        }}>
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary-color rounded-lg flex items-center justify-center" 
-                style={{ background: 'var(--primary-color)' }}>
-                <span className="text-white font-bold text-xl">T</span>
+          <div style={{ gridColumn: 'span 2' }}>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', textDecoration: 'none' }}>
+              <div style={{ 
+                width: '40px', 
+                height: '40px', 
+                background: '#0066ff', 
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>T</span>
               </div>
-              <span className="text-2xl font-bold text-white">Twibbonize</span>
+              <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
             </Link>
-            <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+            <p style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '24px', lineHeight: '1.6', maxWidth: '300px' }}>
               Show your support! Create and share campaign frames to unite communities and support causes you care about.
             </p>
             
             {/* Social Media Icons */}
-            <div className="flex space-x-3 mb-6">
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
               {socialLinks.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  style={{ color: '#9ca3af', transition: 'color 0.2s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
                   aria-label={item.name}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -131,20 +166,50 @@ export default function Footer() {
             </div>
 
             {/* App Download Badges */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="#" className="inline-block">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
-                  alt="Download on App Store" 
-                  className="h-10"
-                />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <a href="#" style={{ display: 'inline-block' }}>
+                <div style={{
+                  background: '#000',
+                  color: '#fff',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  border: '1px solid #333',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '14px',
+                  textDecoration: 'none'
+                }}>
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <div>
+                    <div style={{ fontSize: '10px' }}>Download on the</div>
+                    <div style={{ fontWeight: '600' }}>App Store</div>
+                  </div>
+                </div>
               </a>
-              <a href="#" className="inline-block">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                  alt="Get it on Google Play" 
-                  className="h-10"
-                />
+              <a href="#" style={{ display: 'inline-block' }}>
+                <div style={{
+                  background: '#000',
+                  color: '#fff',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  border: '1px solid #333',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '14px',
+                  textDecoration: 'none'
+                }}>
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                  </svg>
+                  <div>
+                    <div style={{ fontSize: '10px' }}>GET IT ON</div>
+                    <div style={{ fontWeight: '600' }}>Google Play</div>
+                  </div>
+                </div>
               </a>
             </div>
           </div>
@@ -152,13 +217,15 @@ export default function Footer() {
           {/* Links Sections */}
           {Object.entries(footerSections).map(([key, section]) => (
             <div key={key}>
-              <h3 className="text-white font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
+              <h3 style={titleStyle}>{section.title}</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {section.links.map((link) => (
-                  <li key={link.name}>
+                  <li key={link.name} style={{ marginBottom: '12px' }}>
                     <Link 
                       href={link.href} 
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
+                      style={linkStyle}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
                     >
                       {link.name}
                     </Link>
@@ -170,26 +237,51 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Section */}
-        <div className="mt-12 pt-12 border-t border-gray-800">
-          <div className="max-w-2xl">
-            <h3 className="text-white font-semibold mb-2">Subscribe to our newsletter</h3>
-            <p className="text-gray-400 text-sm mb-4">
+        <div style={{ 
+          paddingTop: '40px',
+          marginTop: '40px',
+          borderTop: '1px solid #374151'
+        }}>
+          <div style={{ maxWidth: '600px' }}>
+            <h3 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '8px', fontSize: '18px' }}>
+              Subscribe to our newsletter
+            </h3>
+            <p style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '16px' }}>
               Get the latest news and updates about campaigns and features
             </p>
-            <form className="flex flex-col sm:flex-row gap-3">
+            <form style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-primary-color focus:outline-none focus:ring-1 focus:ring-primary-color/50 transition-all"
-                style={{ '--primary-color': '#0066ff' }}
+                style={{
+                  flex: '1',
+                  minWidth: '250px',
+                  padding: '10px 16px',
+                  backgroundColor: '#374151',
+                  border: '1px solid #4b5563',
+                  borderRadius: '8px',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  outline: 'none'
+                }}
+                onFocus={(e) => e.currentTarget.style.borderColor = '#0066ff'}
+                onBlur={(e) => e.currentTarget.style.borderColor = '#4b5563'}
               />
               <button
                 type="submit"
-                className="px-6 py-2.5 bg-primary-color text-white rounded-lg font-semibold hover:bg-primary-dark transition-all whitespace-nowrap"
-                style={{ 
-                  background: 'var(--primary-color)',
-                  '--primary-dark': '#0052cc'
+                style={{
+                  padding: '10px 24px',
+                  backgroundColor: '#0066ff',
+                  color: '#ffffff',
+                  borderRadius: '8px',
+                  fontWeight: '600',
+                  fontSize: '14px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s'
                 }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0052cc'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0066ff'}
               >
                 Subscribe
               </button>
@@ -199,44 +291,72 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="container-custom py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex flex-wrap items-center gap-4 text-sm">
-              <p className="text-gray-400">
-                © {currentYear} Twibbonize. All rights reserved.
-              </p>
-              <div className="flex items-center gap-4">
-                <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-                <span className="text-gray-600">·</span>
-                <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-                <span className="text-gray-600">·</span>
-                <Link href="/cookies" className="text-gray-400 hover:text-white transition-colors">
-                  Cookie Policy
-                </Link>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <select 
-                className="text-sm text-gray-400 bg-transparent border border-gray-700 rounded-lg px-3 py-1.5 focus:border-primary-color focus:outline-none hover:border-gray-600 transition-colors" 
-                style={{ '--primary-color': '#0066ff' }}
+      <div style={{ borderTop: '1px solid #374151', backgroundColor: '#111827' }}>
+        <div className="container-custom" style={{ 
+          padding: '24px 20px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '16px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <p style={{ color: '#9ca3af', fontSize: '14px', margin: 0 }}>
+              © {currentYear} Twibbonize. All rights reserved.
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <Link 
+                href="/privacy" 
+                style={linkStyle}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
               >
-                <option value="en">English</option>
-                <option value="id">Bahasa Indonesia</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="pt">Português</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-              </select>
+                Privacy Policy
+              </Link>
+              <span style={{ color: '#4b5563' }}>·</span>
+              <Link 
+                href="/terms" 
+                style={linkStyle}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+              >
+                Terms of Service
+              </Link>
+              <span style={{ color: '#4b5563' }}>·</span>
+              <Link 
+                href="/cookies" 
+                style={linkStyle}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+              >
+                Cookie Policy
+              </Link>
             </div>
           </div>
+          
+          <select 
+            style={{
+              fontSize: '14px',
+              color: '#9ca3af',
+              backgroundColor: 'transparent',
+              border: '1px solid #4b5563',
+              borderRadius: '6px',
+              padding: '6px 12px',
+              outline: 'none',
+              cursor: 'pointer'
+            }}
+            onFocus={(e) => e.currentTarget.style.borderColor = '#0066ff'}
+            onBlur={(e) => e.currentTarget.style.borderColor = '#4b5563'}
+          >
+            <option value="en">🌐 English</option>
+            <option value="id">🌐 Bahasa Indonesia</option>
+            <option value="es">🌐 Español</option>
+            <option value="fr">🌐 Français</option>
+            <option value="de">🌐 Deutsch</option>
+            <option value="pt">🌐 Português</option>
+            <option value="ja">🌐 日本語</option>
+            <option value="ko">🌐 한국어</option>
+          </select>
         </div>
       </div>
     </footer>
