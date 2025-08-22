@@ -3,32 +3,22 @@ import Link from 'next/link';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    product: [
-      { name: 'How it Works', href: '/how-it-works' },
-      { name: 'Features', href: '/features' },
-      { name: 'Templates', href: '/templates' },
-      { name: 'Pricing', href: '/pricing' }
-    ],
-    resources: [
-      { name: 'Blog', href: '/blog' },
-      { name: 'Help Center', href: '/help' },
-      { name: 'API Docs', href: '/api' },
-      { name: 'Guidelines', href: '/guidelines' }
-    ],
-    company: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Contact', href: '/contact' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Press Kit', href: '/press' }
-    ],
-    legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
-      { name: 'Cookie Policy', href: '/cookies' },
-      { name: 'DMCA', href: '/dmca' }
-    ]
-  };
+  const footerLinks = [
+    { name: 'How it Works', href: '/how-it-works' },
+    { name: 'Features', href: '/features' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Help Center', href: '/help' },
+    { name: 'API', href: '/api' }
+  ];
+
+  const legalLinks = [
+    { name: 'Privacy', href: '/privacy' },
+    { name: 'Terms', href: '/terms' },
+    { name: 'Cookies', href: '/cookies' }
+  ];
 
   const socialLinks = [
     {
@@ -61,125 +51,122 @@ export default function Footer() {
       )
     },
     {
-      name: 'YouTube',
-      href: 'https://youtube.com',
+      name: 'LinkedIn',
+      href: 'https://linkedin.com',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
         </svg>
       )
     }
   ];
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="container-custom">
-        <div className="py-12 lg:py-16">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-            <div className="col-span-2">
-              <Link href="/" className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-primary-color rounded-lg flex items-center justify-center" style={{ background: 'var(--primary-color)' }}>
-                  <span className="text-white font-bold text-xl">T</span>
-                </div>
-                <span className="text-2xl font-bold text-gray-900">Twibbonize</span>
-              </Link>
-              <p className="text-gray-600 mb-6 max-w-md">
-                Create and share campaign frames to support causes you care about. Join millions making an impact.
-              </p>
-              <div className="flex space-x-2">
-                {socialLinks.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-500 hover:text-primary-color transition-colors p-2 rounded-lg hover:bg-gray-100"
-                    aria-label={item.name}
-                    style={{ '--primary-color': '#0066ff' }}
-                  >
-                    {item.icon}
-                  </a>
-                ))}
+    <footer className="bg-white border-t border-gray-200">
+      {/* Newsletter Section */}
+      <div className="bg-gradient-subtle border-b border-gray-200">
+        <div className="container-custom py-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">Stay Updated</h3>
+            <p className="text-gray-600 mb-6">Get the latest campaigns and features delivered to your inbox</p>
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-2.5 border border-gray-300 rounded-full focus:border-primary-color focus:outline-none focus:ring-2 focus:ring-primary-color/20 transition-all"
+                style={{ '--primary-color': '#0066ff' }}
+              />
+              <button
+                type="submit"
+                className="px-6 py-2.5 bg-primary-color text-white rounded-full font-semibold hover:bg-primary-dark transition-all whitespace-nowrap"
+                style={{ 
+                  background: 'var(--primary-color)',
+                  '--primary-color': '#0066ff',
+                  '--primary-dark': '#0052cc'
+                }}
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="container-custom py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Brand Section */}
+          <div>
+            <Link href="/" className="flex items-center space-x-2 mb-4">
+              <div className="w-10 h-10 bg-primary-color rounded-lg flex items-center justify-center" 
+                style={{ background: 'var(--primary-color)' }}>
+                <span className="text-white font-bold text-xl">T</span>
               </div>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Product</h3>
-              <ul className="space-y-3">
-                {footerLinks.product.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-gray-600 hover:text-primary-color transition-colors text-sm" style={{ '--primary-color': '#0066ff' }}>
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Resources</h3>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-gray-600 hover:text-primary-color transition-colors text-sm" style={{ '--primary-color': '#0066ff' }}>
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-gray-600 hover:text-primary-color transition-colors text-sm" style={{ '--primary-color': '#0066ff' }}>
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Legal</h3>
-              <ul className="space-y-3">
-                {footerLinks.legal.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-gray-600 hover:text-primary-color transition-colors text-sm" style={{ '--primary-color': '#0066ff' }}>
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <span className="text-xl font-bold text-gray-900">Twibbonize</span>
+            </Link>
+            <p className="text-gray-600 text-sm mb-4">
+              Create and share campaign frames to support causes you care about.
+            </p>
+            <div className="flex space-x-1">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-500 hover:text-primary-color p-2 rounded-lg hover:bg-gray-100 transition-all"
+                  aria-label={item.name}
+                  style={{ '--primary-color': '#0066ff' }}
+                >
+                  {item.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-600">
-                <p>© {currentYear} Twibbonize. All rights reserved.</p>
-                <div className="flex items-center gap-4">
-                  <Link href="/privacy" className="hover:text-primary-color transition-colors" style={{ '--primary-color': '#0066ff' }}>
-                    Privacy
+          {/* Quick Links */}
+          <div className="md:col-span-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {footerLinks.map((link) => (
+                <Link 
+                  key={link.name}
+                  href={link.href} 
+                  className="text-gray-600 hover:text-primary-color transition-colors text-sm py-1" 
+                  style={{ '--primary-color': '#0066ff' }}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-8 pt-8 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+              <p>© {currentYear} Twibbonize</p>
+              <span className="hidden sm:inline text-gray-400">•</span>
+              <div className="flex items-center gap-4">
+                {legalLinks.map((link) => (
+                  <Link 
+                    key={link.name}
+                    href={link.href} 
+                    className="hover:text-primary-color transition-colors" 
+                    style={{ '--primary-color': '#0066ff' }}
+                  >
+                    {link.name}
                   </Link>
-                  <Link href="/terms" className="hover:text-primary-color transition-colors" style={{ '--primary-color': '#0066ff' }}>
-                    Terms
-                  </Link>
-                  <Link href="/cookies" className="hover:text-primary-color transition-colors" style={{ '--primary-color': '#0066ff' }}>
-                    Cookies
-                  </Link>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 text-sm">
-                <select className="bg-transparent text-gray-600 border border-gray-300 rounded-lg px-3 py-1.5 focus:border-primary-color focus:outline-none" style={{ '--primary-color': '#0066ff' }}>
-                  <option>English</option>
-                  <option>Español</option>
-                  <option>Français</option>
-                  <option>Deutsch</option>
-                  <option>Bahasa</option>
-                </select>
+                ))}
               </div>
             </div>
+            <select 
+              className="text-sm text-gray-600 bg-transparent border border-gray-300 rounded-lg px-3 py-1.5 focus:border-primary-color focus:outline-none" 
+              style={{ '--primary-color': '#0066ff' }}
+            >
+              <option>🌐 English</option>
+              <option>🌐 Español</option>
+              <option>🌐 Français</option>
+              <option>🌐 Bahasa</option>
+            </select>
           </div>
         </div>
       </div>
