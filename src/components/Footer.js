@@ -166,50 +166,20 @@ export default function Footer() {
             </div>
 
             {/* App Download Badges */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <a href="#" style={{ display: 'inline-block' }}>
-                <div style={{
-                  background: '#000',
-                  color: '#fff',
-                  padding: '8px 16px',
-                  borderRadius: '6px',
-                  border: '1px solid #333',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '14px',
-                  textDecoration: 'none'
-                }}>
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                  </svg>
-                  <div>
-                    <div style={{ fontSize: '10px' }}>Download on the</div>
-                    <div style={{ fontWeight: '600' }}>App Store</div>
-                  </div>
-                </div>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <a href="#" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+                  alt="Download on App Store" 
+                  style={{ height: '40px', width: 'auto' }}
+                />
               </a>
-              <a href="#" style={{ display: 'inline-block' }}>
-                <div style={{
-                  background: '#000',
-                  color: '#fff',
-                  padding: '8px 16px',
-                  borderRadius: '6px',
-                  border: '1px solid #333',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '14px',
-                  textDecoration: 'none'
-                }}>
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                  </svg>
-                  <div>
-                    <div style={{ fontSize: '10px' }}>GET IT ON</div>
-                    <div style={{ fontWeight: '600' }}>Google Play</div>
-                  </div>
-                </div>
+              <a href="#" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                  alt="Get it on Google Play" 
+                  style={{ height: '40px', width: 'auto' }}
+                />
               </a>
             </div>
           </div>
@@ -236,26 +206,27 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Newsletter Section */}
+        {/* Newsletter Section - Centered */}
         <div style={{ 
           paddingTop: '40px',
           marginTop: '40px',
-          borderTop: '1px solid #374151'
+          borderTop: '1px solid #374151',
+          textAlign: 'center'
         }}>
-          <div style={{ maxWidth: '600px' }}>
-            <h3 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '8px', fontSize: '18px' }}>
+          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+            <h3 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '8px', fontSize: '20px' }}>
               Subscribe to our newsletter
             </h3>
-            <p style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '16px' }}>
-              Get the latest news and updates about campaigns and features
+            <p style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '20px' }}>
+              Get the latest news and updates about campaigns and features delivered to your inbox
             </p>
-            <form style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <form style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <input
                 type="email"
                 placeholder="Enter your email address"
                 style={{
-                  flex: '1',
-                  minWidth: '250px',
+                  width: '100%',
+                  maxWidth: '350px',
                   padding: '10px 16px',
                   backgroundColor: '#374151',
                   border: '1px solid #4b5563',
@@ -270,7 +241,7 @@ export default function Footer() {
               <button
                 type="submit"
                 style={{
-                  padding: '10px 24px',
+                  padding: '10px 32px',
                   backgroundColor: '#0066ff',
                   color: '#ffffff',
                   borderRadius: '8px',
