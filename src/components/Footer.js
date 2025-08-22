@@ -1,52 +1,40 @@
 'use client';
 
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [isWideScreen, setIsWideScreen] = useState(true);
 
-  const footerSections = {
-    product: {
-      title: 'Product',
-      links: [
-        { name: 'Create Twibbon', href: '/create' },
-        { name: 'Explore', href: '/explore' },
-        { name: 'Templates', href: '/templates' },
-        { name: 'Examples', href: '/examples' },
-        { name: 'Features', href: '/features' }
-      ]
-    },
-    company: {
-      title: 'Company',
-      links: [
-        { name: 'About Us', href: '/about' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'Careers', href: '/careers' },
-        { name: 'Press', href: '/press' },
-        { name: 'Partners', href: '/partners' }
-      ]
-    },
-    support: {
-      title: 'Support',
-      links: [
-        { name: 'Help Center', href: '/help' },
-        { name: 'Contact Us', href: '/contact' },
-        { name: 'FAQ', href: '/faq' },
-        { name: 'Guidelines', href: '/guidelines' },
-        { name: 'Status', href: '/status' }
-      ]
-    },
-    resources: {
-      title: 'Resources',
-      links: [
-        { name: 'API Documentation', href: '/api' },
-        { name: 'Developers', href: '/developers' },
-        { name: 'Brand Assets', href: '/brand' },
-        { name: 'Community', href: '/community' },
-        { name: 'Affiliate', href: '/affiliate' }
-      ]
-    }
-  };
+  useEffect(() => {
+    const checkScreenWidth = () => {
+      // Check if all content can fit in one row (approximate breakpoint at 1400px)
+      setIsWideScreen(window.innerWidth >= 1400);
+    };
+
+    checkScreenWidth();
+    window.addEventListener('resize', checkScreenWidth);
+    return () => window.removeEventListener('resize', checkScreenWidth);
+  }, []);
+
+  const footerLinks = [
+    { name: 'Create Twibbon', href: '/create' },
+    { name: 'Explore', href: '/explore' },
+    { name: 'Templates', href: '/templates' },
+    { name: 'Features', href: '/features' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Help Center', href: '/help' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'FAQ', href: '/faq' },
+    { name: 'API', href: '/api' },
+    { name: 'Community', href: '/community' },
+    { name: 'Guidelines', href: '/guidelines' },
+    { name: 'Partners', href: '/partners' }
+  ];
 
   const socialLinks = [
     {
@@ -105,134 +93,222 @@ export default function Footer() {
 
   const linkStyle = {
     color: '#9ca3af',
-    fontSize: '14px',
+    fontSize: '13px',
     textDecoration: 'none',
-    transition: 'color 0.2s'
-  };
-
-  const titleStyle = {
-    color: '#ffffff',
-    fontWeight: '600',
-    marginBottom: '16px',
-    fontSize: '16px'
+    transition: 'color 0.2s',
+    whiteSpace: 'nowrap'
   };
 
   return (
     <footer style={footerStyle}>
       {/* Main Footer Content */}
-      <div className="container-custom" style={{ padding: '60px 20px 40px' }}>
+      <div className="container-custom" style={{ padding: '40px 20px 30px' }}>
+        {/* Top Section - Logo, Links, Social, Apps */}
         <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '40px',
-          marginBottom: '40px'
+          paddingBottom: '30px',
+          borderBottom: '1px solid #374151'
         }}>
-          {/* Brand Section */}
-          <div style={{ gridColumn: 'span 2' }}>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', textDecoration: 'none' }}>
+          {isWideScreen ? (
+            // Wide screen: Everything in one row
+            <div style={{ 
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '40px'
+            }}>
+              {/* Logo */}
+              <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', flexShrink: 0 }}>
+                <div style={{ 
+                  width: '32px', 
+                  height: '32px', 
+                  background: '#0066ff', 
+                  borderRadius: '6px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>T</span>
+                </div>
+                <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
+              </Link>
+
+              {/* All Links in one row */}
               <div style={{ 
-                width: '40px', 
-                height: '40px', 
-                background: '#0066ff', 
-                borderRadius: '8px',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                gap: '24px',
+                flex: 1,
+                justifyContent: 'center',
+                overflowX: 'auto'
               }}>
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>T</span>
+                {footerLinks.map((link) => (
+                  <Link 
+                    key={link.name}
+                    href={link.href} 
+                    style={linkStyle}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
               </div>
-              <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
-            </Link>
-            <p style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '24px', lineHeight: '1.6', maxWidth: '300px' }}>
-              Show your support! Create and share campaign frames to unite communities and support causes you care about.
-            </p>
-            
-            {/* Social Media Icons */}
-            <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
-              {socialLinks.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  style={{ color: '#9ca3af', transition: 'color 0.2s' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
-                  aria-label={item.name}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.icon}
-                </a>
-              ))}
-            </div>
 
-            {/* App Download Badges */}
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <a href="#" style={{ display: 'inline-block', textDecoration: 'none' }}>
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
-                  alt="Download on App Store" 
-                  style={{ height: '40px', width: 'auto' }}
-                />
-              </a>
-              <a href="#" style={{ display: 'inline-block', textDecoration: 'none' }}>
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                  alt="Get it on Google Play" 
-                  style={{ height: '40px', width: 'auto' }}
-                />
-              </a>
-            </div>
-          </div>
-
-          {/* Links Sections */}
-          {Object.entries(footerSections).map(([key, section]) => (
-            <div key={key}>
-              <h3 style={titleStyle}>{section.title}</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {section.links.map((link) => (
-                  <li key={link.name} style={{ marginBottom: '12px' }}>
-                    <Link 
-                      href={link.href} 
-                      style={linkStyle}
+              {/* Social and Apps */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
+                {/* Social Media Icons */}
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  {socialLinks.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      style={{ color: '#9ca3af', transition: 'color 0.2s' }}
                       onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
                       onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+                      aria-label={item.name}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                      {item.icon}
+                    </a>
+                  ))}
+                </div>
+
+                {/* App Badges */}
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <a href="#" style={{ display: 'inline-block' }}>
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+                      alt="Download on App Store" 
+                      style={{ height: '32px', width: 'auto' }}
+                    />
+                  </a>
+                  <a href="#" style={{ display: 'inline-block' }}>
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                      alt="Get it on Google Play" 
+                      style={{ height: '32px', width: 'auto' }}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
-          ))}
+          ) : (
+            // Narrow screen: Logo/Social/Apps in first row, all links in second row
+            <>
+              <div style={{ 
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '25px',
+                flexWrap: 'wrap',
+                gap: '20px'
+              }}>
+                {/* Logo */}
+                <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+                  <div style={{ 
+                    width: '32px', 
+                    height: '32px', 
+                    background: '#0066ff', 
+                    borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>T</span>
+                  </div>
+                  <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
+                </Link>
+
+                {/* Social and Apps */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                  {/* Social Media Icons */}
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    {socialLinks.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        style={{ color: '#9ca3af', transition: 'color 0.2s' }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+                        aria-label={item.name}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.icon}
+                      </a>
+                    ))}
+                  </div>
+
+                  {/* App Badges */}
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <a href="#" style={{ display: 'inline-block' }}>
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+                        alt="Download on App Store" 
+                        style={{ height: '32px', width: 'auto' }}
+                      />
+                    </a>
+                    <a href="#" style={{ display: 'inline-block' }}>
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                        alt="Get it on Google Play" 
+                        style={{ height: '32px', width: 'auto' }}
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* All Links in second row */}
+              <div style={{ 
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '15px 30px',
+                justifyContent: 'center'
+              }}>
+                {footerLinks.map((link) => (
+                  <Link 
+                    key={link.name}
+                    href={link.href} 
+                    style={linkStyle}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Newsletter Section - Centered */}
         <div style={{ 
-          paddingTop: '40px',
-          marginTop: '40px',
-          borderTop: '1px solid #374151',
+          paddingTop: '30px',
+          paddingBottom: '30px',
+          borderBottom: '1px solid #374151',
           textAlign: 'center'
         }}>
-          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-            <h3 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '8px', fontSize: '20px' }}>
+          <div style={{ maxWidth: '500px', margin: '0 auto' }}>
+            <h3 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '6px', fontSize: '16px' }}>
               Subscribe to our newsletter
             </h3>
-            <p style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '20px' }}>
-              Get the latest news and updates about campaigns and features delivered to your inbox
+            <p style={{ color: '#9ca3af', fontSize: '13px', marginBottom: '14px' }}>
+              Get the latest campaigns delivered to your inbox
             </p>
-            <form style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <form style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
               <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder="Enter your email"
                 style={{
-                  width: '100%',
-                  maxWidth: '350px',
-                  padding: '10px 16px',
+                  flex: 1,
+                  maxWidth: '280px',
+                  padding: '7px 12px',
                   backgroundColor: '#374151',
                   border: '1px solid #4b5563',
-                  borderRadius: '8px',
+                  borderRadius: '6px',
                   color: '#ffffff',
-                  fontSize: '14px',
+                  fontSize: '13px',
                   outline: 'none'
                 }}
                 onFocus={(e) => e.currentTarget.style.borderColor = '#0066ff'}
@@ -241,12 +317,12 @@ export default function Footer() {
               <button
                 type="submit"
                 style={{
-                  padding: '10px 32px',
+                  padding: '7px 20px',
                   backgroundColor: '#0066ff',
                   color: '#ffffff',
-                  borderRadius: '8px',
+                  borderRadius: '6px',
                   fontWeight: '600',
-                  fontSize: '14px',
+                  fontSize: '13px',
                   border: 'none',
                   cursor: 'pointer',
                   transition: 'background-color 0.2s'
@@ -259,74 +335,70 @@ export default function Footer() {
             </form>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div style={{ borderTop: '1px solid #374151', backgroundColor: '#111827' }}>
-        <div className="container-custom" style={{ 
-          padding: '24px 20px',
+        {/* Bottom Bar */}
+        <div style={{ 
+          paddingTop: '20px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '16px'
+          gap: '12px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <p style={{ color: '#9ca3af', fontSize: '14px', margin: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <p style={{ color: '#9ca3af', fontSize: '12px', margin: 0 }}>
               © {currentYear} Twibbonize. All rights reserved.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Link 
                 href="/privacy" 
-                style={linkStyle}
+                style={{ ...linkStyle, fontSize: '12px' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
                 onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
               >
-                Privacy Policy
+                Privacy
               </Link>
-              <span style={{ color: '#4b5563' }}>·</span>
+              <span style={{ color: '#4b5563', fontSize: '12px' }}>·</span>
               <Link 
                 href="/terms" 
-                style={linkStyle}
+                style={{ ...linkStyle, fontSize: '12px' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
                 onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
               >
-                Terms of Service
+                Terms
               </Link>
-              <span style={{ color: '#4b5563' }}>·</span>
+              <span style={{ color: '#4b5563', fontSize: '12px' }}>·</span>
               <Link 
                 href="/cookies" 
-                style={linkStyle}
+                style={{ ...linkStyle, fontSize: '12px' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
                 onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
               >
-                Cookie Policy
+                Cookies
               </Link>
             </div>
           </div>
           
           <select 
             style={{
-              fontSize: '14px',
+              fontSize: '12px',
               color: '#9ca3af',
               backgroundColor: 'transparent',
               border: '1px solid #4b5563',
-              borderRadius: '6px',
-              padding: '6px 12px',
+              borderRadius: '4px',
+              padding: '4px 8px',
               outline: 'none',
               cursor: 'pointer'
             }}
             onFocus={(e) => e.currentTarget.style.borderColor = '#0066ff'}
             onBlur={(e) => e.currentTarget.style.borderColor = '#4b5563'}
           >
-            <option value="en">🌐 English</option>
-            <option value="id">🌐 Bahasa Indonesia</option>
-            <option value="es">🌐 Español</option>
-            <option value="fr">🌐 Français</option>
-            <option value="de">🌐 Deutsch</option>
-            <option value="pt">🌐 Português</option>
-            <option value="ja">🌐 日本語</option>
-            <option value="ko">🌐 한국어</option>
+            <option value="en">English</option>
+            <option value="id">Bahasa</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="pt">Português</option>
           </select>
         </div>
       </div>
