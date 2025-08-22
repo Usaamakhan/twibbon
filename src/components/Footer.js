@@ -9,8 +9,8 @@ export default function Footer() {
 
   useEffect(() => {
     const checkScreenWidth = () => {
-      // Check if all content can fit in one row (approximate breakpoint at 1400px)
-      setIsWideScreen(window.innerWidth >= 1400);
+      // Check if all content can fit in one row (approximate breakpoint at 1600px)
+      setIsWideScreen(window.innerWidth >= 1600);
     };
 
     checkScreenWidth();
@@ -18,23 +18,44 @@ export default function Footer() {
     return () => window.removeEventListener('resize', checkScreenWidth);
   }, []);
 
-  const footerLinks = [
-    { name: 'Create Twibbon', href: '/create' },
-    { name: 'Explore', href: '/explore' },
-    { name: 'Templates', href: '/templates' },
-    { name: 'Features', href: '/features' },
-    { name: 'Pricing', href: '/pricing' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Help Center', href: '/help' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'API', href: '/api' },
-    { name: 'Community', href: '/community' },
-    { name: 'Guidelines', href: '/guidelines' },
-    { name: 'Partners', href: '/partners' }
-  ];
+  const footerSections = {
+    product: {
+      title: 'Product',
+      links: [
+        { name: 'Create Twibbon', href: '/create' },
+        { name: 'Explore', href: '/explore' },
+        { name: 'Templates', href: '/templates' },
+        { name: 'Features', href: '/features' }
+      ]
+    },
+    company: {
+      title: 'Company',
+      links: [
+        { name: 'About Us', href: '/about' },
+        { name: 'Blog', href: '/blog' },
+        { name: 'Careers', href: '/careers' },
+        { name: 'Press', href: '/press' }
+      ]
+    },
+    support: {
+      title: 'Support',
+      links: [
+        { name: 'Help Center', href: '/help' },
+        { name: 'Contact Us', href: '/contact' },
+        { name: 'FAQ', href: '/faq' },
+        { name: 'Guidelines', href: '/guidelines' }
+      ]
+    },
+    resources: {
+      title: 'Resources',
+      links: [
+        { name: 'API', href: '/api' },
+        { name: 'Community', href: '/community' },
+        { name: 'Partners', href: '/partners' },
+        { name: 'Pricing', href: '/pricing' }
+      ]
+    }
+  };
 
   const socialLinks = [
     {
@@ -95,68 +116,84 @@ export default function Footer() {
     color: '#9ca3af',
     fontSize: '13px',
     textDecoration: 'none',
-    transition: 'color 0.2s',
-    whiteSpace: 'nowrap'
+    transition: 'color 0.2s'
+  };
+
+  const sectionTitleStyle = {
+    color: '#ffffff',
+    fontSize: '14px',
+    fontWeight: '600',
+    marginBottom: '12px'
   };
 
   return (
     <footer style={footerStyle}>
       {/* Main Footer Content */}
       <div className="container-custom" style={{ padding: '40px 20px 30px' }}>
-        {/* Top Section - Logo, Links, Social, Apps */}
+        {/* Top Section - Logo and Link Sections */}
         <div style={{ 
           paddingBottom: '30px',
           borderBottom: '1px solid #374151'
         }}>
           {isWideScreen ? (
-            // Wide screen: Everything in one row
+            // Wide screen: Logo + All sections in one row + Social/Apps
             <div style={{ 
               display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '40px'
+              alignItems: 'flex-start',
+              gap: '50px'
             }}>
               {/* Logo */}
-              <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', flexShrink: 0 }}>
-                <div style={{ 
-                  width: '32px', 
-                  height: '32px', 
-                  background: '#0066ff', 
-                  borderRadius: '6px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>T</span>
-                </div>
-                <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
-              </Link>
+              <div style={{ flexShrink: 0 }}>
+                <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+                  <div style={{ 
+                    width: '32px', 
+                    height: '32px', 
+                    background: '#0066ff', 
+                    borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>T</span>
+                  </div>
+                  <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
+                </Link>
+                <p style={{ color: '#9ca3af', fontSize: '13px', marginTop: '8px', maxWidth: '200px', lineHeight: '1.5' }}>
+                  Create and share campaign frames to unite communities.
+                </p>
+              </div>
 
-              {/* All Links in one row */}
+              {/* All Link Sections */}
               <div style={{ 
                 display: 'flex',
-                gap: '24px',
-                flex: 1,
-                justifyContent: 'center',
-                overflowX: 'auto'
+                gap: '40px',
+                flex: 1
               }}>
-                {footerLinks.map((link) => (
-                  <Link 
-                    key={link.name}
-                    href={link.href} 
-                    style={linkStyle}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
-                  >
-                    {link.name}
-                  </Link>
+                {Object.entries(footerSections).map(([key, section]) => (
+                  <div key={key} style={{ minWidth: '120px' }}>
+                    <h3 style={sectionTitleStyle}>{section.title}</h3>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      {section.links.map((link) => (
+                        <li key={link.name} style={{ marginBottom: '8px' }}>
+                          <Link 
+                            href={link.href} 
+                            style={linkStyle}
+                            onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+                          >
+                            {link.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
 
               {/* Social and Apps */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
+              <div style={{ flexShrink: 0 }}>
                 {/* Social Media Icons */}
-                <div style={{ display: 'flex', gap: '10px' }}>
+                <div style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
                   {socialLinks.map((item) => (
                     <a
                       key={item.name}
@@ -174,7 +211,7 @@ export default function Footer() {
                 </div>
 
                 {/* App Badges */}
-                <div style={{ display: 'flex', gap: '8px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <a href="#" style={{ display: 'inline-block' }}>
                     <img 
                       src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
@@ -193,13 +230,13 @@ export default function Footer() {
               </div>
             </div>
           ) : (
-            // Narrow screen: Logo/Social/Apps in first row, all links in second row
+            // Narrow screen: Logo/Social/Apps in first row, all sections in second row
             <>
               <div style={{ 
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '25px',
+                marginBottom: '30px',
                 flexWrap: 'wrap',
                 gap: '20px'
               }}>
@@ -259,30 +296,37 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* All Links in second row */}
+              {/* All Link Sections in rows */}
               <div style={{ 
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '15px 30px',
-                justifyContent: 'center'
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                gap: '30px'
               }}>
-                {footerLinks.map((link) => (
-                  <Link 
-                    key={link.name}
-                    href={link.href} 
-                    style={linkStyle}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
-                  >
-                    {link.name}
-                  </Link>
+                {Object.entries(footerSections).map(([key, section]) => (
+                  <div key={key}>
+                    <h3 style={sectionTitleStyle}>{section.title}</h3>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      {section.links.map((link) => (
+                        <li key={link.name} style={{ marginBottom: '8px' }}>
+                          <Link 
+                            href={link.href} 
+                            style={linkStyle}
+                            onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+                          >
+                            {link.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
             </>
           )}
         </div>
 
-        {/* Newsletter Section - Centered */}
+        {/* Newsletter Section */}
         <div style={{ 
           paddingTop: '30px',
           paddingBottom: '30px',
