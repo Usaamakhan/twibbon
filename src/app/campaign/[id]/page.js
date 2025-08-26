@@ -1,9 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import FrameEditor from '@/components/FrameEditor';
+import dynamic from 'next/dynamic';
+import FrameEditorSkeleton from '@/components/FrameEditorSkeleton';
+
+// Dynamically import FrameEditor to reduce initial bundle size
+const FrameEditor = dynamic(() => import('@/components/FrameEditor'), {
+  loading: () => <FrameEditorSkeleton />,
+  ssr: false // Disable SSR for FrameEditor as it uses canvas and client-side APIs
+});
 
 // Mock data - will be replaced with API calls
 const getCampaignData = (id) => {
@@ -40,6 +47,7 @@ const getCampaignData = (id) => {
 export default function CampaignDetailPage() {
   const params = useParams();
   const [showEditor, setShowEditor] = useState(false);
+  const [isLoadingEditor, setIsLoadingEditor] = useState(false);
   const campaign = getCampaignData(params.id);
 
   if (!campaign) {
@@ -79,6 +87,23 @@ export default function CampaignDetailPage() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
     alert('Link copied to clipboard!');
+  };
+
+  const handleOpenEditor = async () => {
+    setIsLoadingEditor(true);
+    // Small delay to show loading state
+    setTimeout(() => {
+      setShowEditor(true);
+      setIsLoadingEditor(false);
+    }, 100);
+  };
+
+  // Preload FrameEditor on hover for better UX
+  const handlePreloadEditor = () => {
+    if (!showEditor && !isLoadingEditor) {
+      // Dynamically import to start loading the component
+      import('@/components/FrameEditor');
+    }
   };
 
   return (
@@ -240,10 +265,19 @@ export default function CampaignDetailPage() {
               </div>
 
               <button
-                onClick={() => setShowEditor(true)}
-                className="w-full btn-primary mb-4"
+                onClick={handleOpenEditor}
+                onMouseEnter={handlePreloadEditor}
+                disabled={isLoadingEditor}
+                className={`w-full btn-primary mb-4 interactive-element btn-micro-bounce ${isLoadingEditor ? 'btn-loading' : ''}`}
               >
-                Create My Frame
+                <span className={`btn-text flex items-center justify-center ${isLoadingEditor ? 'opacity-0' : ''}`}>
+                  Create My Frame
+                </span>
+                {isLoadingEditor && (
+                  <div className="btn-spinner">
+                    <div className="spinner-enhanced" />
+                  </div>
+                )}
               </button>
 
               <div className="text-center">
@@ -282,12 +316,14 @@ export default function CampaignDetailPage() {
         </div>
       </main>
 
-      {/* Frame Editor Modal */}
+      {/* Frame Editor Modal with Suspense */}
       {showEditor && (
-        <FrameEditor
-          campaign={campaign}
-          onClose={() => setShowEditor(false)}
-        />
+        <Suspense fallback={<FrameEditorSkeleton />}>
+          <FrameEditor
+            campaign={campaign}
+            onClose={() => setShowEditor(false)}
+          />
+        </Suspense>
       )}
 
   {/* Footer provided by root layout */}

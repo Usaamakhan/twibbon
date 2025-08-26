@@ -96,16 +96,26 @@ export default function StatCounter({
   return (
     <div 
       ref={counterRef}
-      className="stat-card animate-fade-in hover:scale-105 transition-transform duration-300"
+      className="stat-card animate-fade-in card-hover-scale interactive-element shadow-sm-enhanced radius-lg backdrop-blur-refined"
       style={{ 
         animationDelay: `${delay / 1000}s`,
         animationFillMode: 'both'
       }}
     >
-      <div className="stat-number">
+      <div className="stat-number gradient-text-blue">
         {formatNumber(count, value)}
       </div>
-      <div className="stat-label">{label}</div>
+      <div className="stat-label text-refined-secondary">{label}</div>
+      
+      {/* Decorative background element */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <div 
+          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500"
+          style={{
+            background: `radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 70%)`
+          }}
+        />
+      </div>
     </div>
   );
 }

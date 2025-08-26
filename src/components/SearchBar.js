@@ -143,16 +143,16 @@ export default function SearchBar({
     <div className={`relative ${className}`}>
       {/* Search Input Container */}
       <div className={`
-        relative flex items-center bg-white border-2 rounded-xl transition-all duration-200
+        relative flex items-center bg-refined-white border-2 radius-xl transition-all duration-200 input-focus-glow shadow-sm-enhanced
         ${isFocused 
-          ? 'border-primary-color shadow-lg shadow-primary-color/20' 
+          ? 'border-primary-color shadow-lg-enhanced' 
           : 'border-gray-200 hover:border-gray-300'
         }
       `}>
         {/* Search Icon */}
         <div className="pl-4 pr-3 flex items-center">
           <svg 
-            className={`w-5 h-5 transition-colors duration-200 ${
+            className={`w-5 h-5 transition-all duration-200 icon-hover-pulse ${
               isFocused ? 'text-primary-color' : 'text-gray-400'
             }`} 
             fill="none" 
@@ -178,18 +178,18 @@ export default function SearchBar({
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder={placeholder}
-          className="flex-1 py-3 pr-4 bg-transparent text-gray-900 placeholder-gray-500 focus:outline-none text-sm md:text-base"
+          className="flex-1 py-3 pr-4 bg-transparent text-refined-primary placeholder-gray-500 focus:outline-none text-enhanced-sm md:text-enhanced-base"
         />
 
         {/* Clear Button */}
         {query && (
           <button
             onClick={handleClear}
-            className="mr-3 p-1 rounded-full hover:bg-gray-100 transition-colors duration-200 group"
+            className="mr-3 p-1 radius-full hover:bg-gray-100 transition-all duration-200 group interactive-element"
             aria-label="Clear search"
           >
             <svg 
-              className="w-4 h-4 text-gray-400 group-hover:text-gray-600" 
+              className="w-4 h-4 text-gray-400 group-hover:text-gray-600 icon-hover-spin" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -207,7 +207,7 @@ export default function SearchBar({
         {/* Search Button */}
         <button
           onClick={() => handleSearch()}
-          className="mr-2 px-3 py-1.5 bg-primary-color text-white rounded-lg hover:bg-primary-dark transition-colors duration-200 text-sm font-medium"
+          className="mr-2 px-3 py-1.5 bg-primary-color text-white radius-lg hover:bg-primary-dark transition-all duration-200 text-enhanced-sm font-medium interactive-element btn-micro-scale"
         >
           Search
         </button>
@@ -217,17 +217,17 @@ export default function SearchBar({
       {showDropdown && showRecentSearches && (
         <div 
           ref={dropdownRef}
-          className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-fade-in"
+          className="absolute top-full left-0 right-0 mt-2 bg-refined-white border border-gray-200 radius-lg shadow-lg-enhanced z-50 animate-fade-in backdrop-blur-refined"
         >
           {filteredRecentSearches.length > 0 || (query.length === 0 && recentSearches.length > 0) ? (
             <>
               <div className="px-4 py-2 border-b border-gray-100 flex items-center justify-between">
-                <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                <span className="text-xs font-medium text-refined-muted uppercase tracking-wide">
                   {query.length > 0 ? 'Matching Searches' : 'Recent Searches'}
                 </span>
                 <button
                   onClick={clearSearchHistory}
-                  className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-xs text-refined-subtle hover:text-refined-secondary transition-colors interactive-element"
                 >
                   Clear All
                 </button>
@@ -239,16 +239,16 @@ export default function SearchBar({
                   return (
                     <div
                       key={index}
-                      className="flex items-center hover:bg-gray-50 transition-colors duration-200"
+                      className="flex items-center hover:bg-gray-50 transition-colors duration-200 interactive-element"
                     >
                       <button
                         onClick={() => {
                           setQuery(search);
                           handleSearch(search);
                         }}
-                        className="flex-1 px-4 py-2 text-left text-sm text-gray-700 flex items-center"
+                        className="flex-1 px-4 py-2 text-left text-enhanced-sm text-refined-primary flex items-center interactive-element"
                       >
-                        <svg className="w-4 h-4 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-refined-subtle mr-3 icon-hover-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <span className="flex-1">{search}</span>
@@ -258,10 +258,10 @@ export default function SearchBar({
                           e.stopPropagation();
                           removeSearchItem(originalIndex);
                         }}
-                        className="px-3 py-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        className="px-3 py-2 text-refined-subtle hover:text-refined-secondary transition-colors interactive-element"
                         title="Remove from history"
                       >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3 h-3 icon-hover-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       </button>
@@ -271,7 +271,7 @@ export default function SearchBar({
               </div>
             </>
           ) : (
-            <div className="px-4 py-3 text-sm text-gray-500 text-center">
+            <div className="px-4 py-3 text-enhanced-sm text-refined-muted text-center">
               No recent searches
             </div>
           )}

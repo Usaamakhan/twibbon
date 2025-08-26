@@ -167,6 +167,7 @@ export default function ImagePlaceholder({
   // Show actual image once loaded
   return (
     <div className={`${baseClasses} bg-gray-100 campaign-image-wrapper`} {...props}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt={alt}
