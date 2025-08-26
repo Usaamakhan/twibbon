@@ -1,5 +1,3 @@
-'use client';
-
 import ImagePlaceholder from './ImagePlaceholder';
 
 export default function ImagePlaceholderDemo() {

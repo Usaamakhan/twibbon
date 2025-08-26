@@ -1,11 +1,8 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
       
       <main className="container-custom py-16">
         <div className="max-w-4xl mx-auto">
@@ -39,7 +36,7 @@ export default function BlogPage() {
         </div>
       </main>
       
-      <Footer />
+  {/* Footer provided by root layout */}
     </div>
   );
 }

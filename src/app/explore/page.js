@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Header and Footer are provided by root layout
 
 const allCampaigns = [
   {
@@ -176,7 +175,7 @@ export default function ExplorePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      
       
       <main className="container-custom py-8">
         <div className="mb-8">
@@ -362,7 +361,7 @@ export default function ExplorePage() {
         )}
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

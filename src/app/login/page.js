@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Header and Footer are provided by root layout
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -37,7 +36,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      
       
       <main className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
@@ -153,7 +152,7 @@ export default function LoginPage() {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

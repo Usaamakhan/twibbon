@@ -1,7 +1,3 @@
-'use client';
-
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 
 export default function AboutPage() {
@@ -44,8 +40,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
+  <div className="min-h-screen bg-gray-50">
       
       <main className="container-custom py-16">
         {/* Hero Section */}
@@ -170,7 +165,7 @@ export default function AboutPage() {
         </div>
       </main>
       
-      <Footer />
+  {/* Footer provided by root layout */}
     </div>
   );
 }

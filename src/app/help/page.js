@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Header and Footer are provided by root layout
 
 export default function HelpPage() {
   const [activeCategory, setActiveCategory] = useState('getting-started');
@@ -102,7 +101,7 @@ export default function HelpPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      
       
       <main className="container-custom py-8">
         <div className="text-center mb-12">
@@ -255,7 +254,7 @@ export default function HelpPage() {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

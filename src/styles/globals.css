@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Custom CSS Variables */
 :root {
@@ -33,6 +35,7 @@ html {
 
 /* Smooth scroll enhancement for WebKit browsers */
 * {
+  scroll-behavior: smooth;
   -webkit-scroll-behavior: smooth;
 }
 

@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Header and Footer are provided by root layout
 
 export default function CreateCampaignPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -84,7 +83,7 @@ export default function CreateCampaignPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      
       
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
@@ -425,7 +424,7 @@ export default function CreateCampaignPage() {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

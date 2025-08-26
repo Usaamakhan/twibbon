@@ -1,4 +1,6 @@
 import '../styles/globals.css';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'Framely - Create & Share Campaign Frames',
@@ -28,7 +30,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="min-h-screen bg-gray-50">
         <div id="root">
-          {children}
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
         </div>
       </body>
     </html>

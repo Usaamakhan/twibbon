@@ -35,7 +35,7 @@ const nextConfig = {
     return [
       {
         source: '/campaign/:slug',
-        destination: '/campaign/[slug]',
+  destination: '/campaign/[id]',
       },
     ];
   },

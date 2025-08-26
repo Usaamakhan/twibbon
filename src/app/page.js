@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Header and Footer are provided by root layout
 import CampaignCard from '@/components/CampaignCard';
 import StatCounter from '@/components/StatCounter';
 import SearchBar from '@/components/SearchBar';
@@ -302,7 +301,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-refined-white page-transition-fade">
-      <Header />
+      
       
       {/* Enhanced Hero Section with Advanced Animations */}
       <section className="hero-section">
@@ -613,7 +612,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 }

@@ -1,11 +1,10 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Header and Footer are provided by root layout
 import Link from 'next/link';
 
 export default function FaqPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      
       
       <main className="container-custom py-16">
         <div className="max-w-4xl mx-auto">
@@ -39,7 +38,7 @@ export default function FaqPage() {
         </div>
       </main>
       
-      <Footer />
+      
     </div>
   );
 }

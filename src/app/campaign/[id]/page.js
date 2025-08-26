@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import FrameEditor from '@/components/FrameEditor';
 
 // Mock data - will be replaced with API calls
@@ -46,13 +44,12 @@ export default function CampaignDetailPage() {
   if (!campaign) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="max-w-4xl mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Campaign Not Found</h1>
           <p className="text-gray-600 mb-8">The campaign you're looking for doesn't exist or has been removed.</p>
           <a href="/explore" className="btn-primary">Browse All Campaigns</a>
         </div>
-        <Footer />
+        {/* Header/Footer provided by root layout */}
       </div>
     );
   }
@@ -84,8 +81,7 @@ export default function CampaignDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
+  <div className="min-h-screen bg-gray-50">
       
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Campaign Header */}
@@ -281,7 +277,7 @@ export default function CampaignDetailPage() {
         />
       )}
 
-      <Footer />
+  {/* Footer provided by root layout */}
     </div>
   );
 }
