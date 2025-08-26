@@ -13,9 +13,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
+    // TODO: submit formData to API
+    // Feedback: replace alert/console with UI toast in future
   };
 
   const handleChange = (e) => {

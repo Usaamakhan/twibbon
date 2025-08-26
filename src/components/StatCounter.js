@@ -49,13 +49,14 @@ export default function StatCounter({
       }
     );
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    const node = counterRef.current;
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, [hasAnimated]);

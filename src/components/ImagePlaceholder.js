@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function ImagePlaceholder({ 
   src, 
@@ -77,20 +77,20 @@ export default function ImagePlaceholder({
   };
 
   // Handle image load
-  const handleImageLoad = () => {
+  const handleImageLoad = useCallback(() => {
     setIsLoading(false);
     setImageLoaded(true);
     setHasError(false);
     if (onLoad) onLoad();
-  };
+  }, [onLoad]);
 
   // Handle image error
-  const handleImageError = () => {
+  const handleImageError = useCallback(() => {
     setIsLoading(false);
     setHasError(true);
     setImageLoaded(false);
     if (onError) onError();
-  };
+  }, [onError]);
 
   // Simulate loading delay for demonstration
   useEffect(() => {
@@ -113,7 +113,7 @@ export default function ImagePlaceholder({
       setIsLoading(false);
       setHasError(true);
     }
-  }, [src]);
+  }, [src, handleImageLoad, handleImageError]);
 
   const baseClasses = `
     image-placeholder-container relative overflow-hidden flex items-center justify-center

@@ -24,8 +24,7 @@ export default function LoginPage() {
     
     // Simulate API call
     setTimeout(() => {
-      console.log('Login data:', formData);
-      alert('Login functionality will be implemented with backend integration');
+      // TODO: perform login with backend; show toast on success/failure
       setIsLoading(false);
     }, 1000);
   };

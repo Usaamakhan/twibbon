@@ -67,14 +67,13 @@ export default function SignupPage() {
     
     // Simulate API call
     setTimeout(() => {
-      console.log('Signup data:', formData);
-      alert('Account created successfully! Please check your email for verification.');
+      // TODO: submit signup data to backend and show UI toast on success
       setIsLoading(false);
     }, 1000);
   };
 
-  const handleSocialSignup = (provider) => {
-    alert(`${provider} signup will be implemented with backend integration`);
+  const handleSocialSignup = (_provider) => {
+    // TODO: implement social signup flow
   };
 
   return (

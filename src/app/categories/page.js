@@ -104,7 +104,6 @@ export default function CategoriesPage() {
     }
   ];
 
-  const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredCategories = categories.filter(category =>

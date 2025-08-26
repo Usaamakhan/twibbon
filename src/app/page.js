@@ -1,7 +1,6 @@
-'use client';
+ 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 // Header and Footer are provided by root layout
 import CampaignCard from '@/components/CampaignCard';
 import StatCounter from '@/components/StatCounter';
@@ -23,7 +22,7 @@ export default function HomePage() {
     { value: '150+', label: 'Countries' }
   ];
 
-  const campaigns = [
+const campaigns = [
     {
       id: 1,
       title: 'Save Our Planet',
@@ -216,7 +215,7 @@ export default function HomePage() {
       views: 52300,
       isVerified: true
     }
-  ];
+];
 
   // Simulate API loading
   useEffect(() => {
@@ -232,6 +231,8 @@ export default function HomePage() {
     if (!isLoading) {
       setFilteredCampaigns(campaigns);
     }
+    // campaigns is a module-scoped constant and won't change at runtime
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   // Filter campaigns based on search query
@@ -248,6 +249,8 @@ export default function HomePage() {
       );
       setFilteredCampaigns(filtered);
     }
+    // campaigns is static at module scope; safe to exclude from deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   // Handle search

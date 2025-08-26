@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// Image from next/image intentionally not used here; using ImagePlaceholder component instead
 import CampaignCardSkeleton from './CampaignCardSkeleton';
 import ImagePlaceholder from './ImagePlaceholder';
 import { highlightMultipleFields } from '@/utils/searchHighlight';
@@ -37,7 +37,7 @@ export default function CampaignCard({ campaign, isLoading = false, searchTerm =
     creatorAvatar,
     createdAt,
     trending,
-    likes,
+  // likes,
     views,
     isVerified
   } = highlightedCampaign;

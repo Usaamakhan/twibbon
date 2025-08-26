@@ -6,7 +6,7 @@ export function highlightSearchTerm(text, searchTerm) {
   const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
   const parts = text.split(regex);
   
-  return parts.map((part, index) => {
+  return parts.map((part) => {
     if (regex.test(part)) {
       return `<mark class="bg-yellow-200 text-yellow-900 px-1 rounded">${part}</mark>`;
     }

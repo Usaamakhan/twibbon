@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export default function Footer() {
@@ -268,17 +269,21 @@ export default function Footer() {
                 {/* App Badges */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <a href="#" style={{ display: 'inline-block' }}>
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
-                      alt="Download on App Store" 
-                      style={{ height: '32px', width: 'auto' }}
+                    <Image
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="Download on App Store"
+                      width={120}
+                      height={32}
+                      unoptimized
                     />
                   </a>
                   <a href="#" style={{ display: 'inline-block' }}>
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                      alt="Get it on Google Play" 
-                      style={{ height: '32px', width: 'auto' }}
+                    <Image
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Get it on Google Play"
+                      width={120}
+                      height={32}
+                      unoptimized
                     />
                   </a>
                 </div>
@@ -334,17 +339,21 @@ export default function Footer() {
                   {/* App Badges */}
                   <div style={{ display: 'flex', gap: '8px' }}>
                     <a href="#" style={{ display: 'inline-block' }}>
-                      <img 
-                        src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
-                        alt="Download on App Store" 
-                        style={{ height: '32px', width: 'auto' }}
+                      <Image
+                        src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                        alt="Download on App Store"
+                        width={120}
+                        height={32}
+                        unoptimized
                       />
                     </a>
                     <a href="#" style={{ display: 'inline-block' }}>
-                      <img 
-                        src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                        alt="Get it on Google Play" 
-                        style={{ height: '32px', width: 'auto' }}
+                      <Image
+                        src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                        alt="Get it on Google Play"
+                        width={120}
+                        height={32}
+                        unoptimized
                       />
                     </a>
                   </div>

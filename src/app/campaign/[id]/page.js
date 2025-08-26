@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import FrameEditor from '@/components/FrameEditor';
 
@@ -87,10 +88,13 @@ export default function CampaignDetailPage() {
         {/* Campaign Header */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
           <div className="relative">
-            <img
+            <Image
               src={campaign.banner}
               alt={campaign.title}
+              width={1200}
+              height={480}
               className="w-full h-64 md:h-80 object-cover"
+              unoptimized
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             <div className="absolute bottom-6 left-6 text-white">
@@ -108,10 +112,13 @@ export default function CampaignDetailPage() {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               {/* Creator Info */}
               <div className="flex items-center space-x-4">
-                <img
+                <Image
                   src={campaign.creator.avatar}
                   alt={campaign.creator.name}
-                  className="w-12 h-12 rounded-full"
+                  width={48}
+                  height={48}
+                  className="rounded-full"
+                  unoptimized
                 />
                 <div>
                   <div className="flex items-center space-x-2">
@@ -220,10 +227,13 @@ export default function CampaignDetailPage() {
             {/* Join Campaign */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <div className="text-center mb-6">
-                <img
+                <Image
                   src={campaign.frame}
                   alt="Campaign Frame"
-                  className="w-32 h-32 mx-auto mb-4 rounded-lg border border-gray-200"
+                  width={128}
+                  height={128}
+                  className="mx-auto mb-4 rounded-lg border border-gray-200"
+                  unoptimized
                 />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Join This Campaign</h3>
                 <p className="text-sm text-gray-600">Upload your photo and apply the frame</p>
@@ -249,10 +259,13 @@ export default function CampaignDetailPage() {
               <div className="space-y-3">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="flex items-center space-x-3">
-                    <img
+                    <Image
                       src={`/api/placeholder/40/40`}
                       alt={`Participant ${i}`}
-                      className="w-10 h-10 rounded-full"
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                      unoptimized
                     />
                     <div className="flex-1">
                       <p className="text-sm font-medium text-gray-900">User {i}</p>

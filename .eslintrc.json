@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true }
+  },
+  "rules": {
+  "no-console": ["warn", { "allow": ["warn", "error"] }],
+  "react/react-in-jsx-scope": "off",
+  "react/prop-types": "off",
+  "react/no-unescaped-entities": "off",
+  "@next/next/no-img-element": "warn",
+  "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+  "react-hooks/exhaustive-deps": "warn"
+  },
+  "settings": {
+    "react": { "version": "detect" }
+  }
+}

@@ -25,7 +25,8 @@ app.prepare().then(() => {
     process.exit(1);
   })
   .listen(port, () => {
+    // Server ready - keep a single startup log. Allow console here for developer visibility.
+    // eslint-disable-next-line no-console
     console.log(`> Ready on http://${hostname}:${port}`);
-    console.log(`> Also available on http://localhost:${port}`);
   });
 });

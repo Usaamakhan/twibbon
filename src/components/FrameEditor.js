@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 export default function FrameEditor({ campaign, onClose }) {
   const [userImage, setUserImage] = useState(null);
@@ -31,7 +31,7 @@ export default function FrameEditor({ campaign, onClose }) {
     }
   };
 
-  const drawCanvas = () => {
+  const drawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -54,11 +54,11 @@ export default function FrameEditor({ campaign, onClose }) {
       ctx.drawImage(frameImg, 0, 0, canvas.width, canvas.height);
     };
     frameImg.src = campaign.frame;
-  };
+  }, [userImage, imagePosition, imageScale, campaign?.frame]);
 
   useEffect(() => {
     drawCanvas();
-  }, [userImage, imagePosition, imageScale]);
+  }, [drawCanvas]);
 
   const handleMouseDown = (e) => {
     if (!userImage) return;

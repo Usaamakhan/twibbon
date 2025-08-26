@@ -64,8 +64,7 @@ export default function CreateCampaignPage() {
 
   const handleSubmit = () => {
     // In a real app, this would submit to your API
-    console.log('Campaign data:', formData);
-    alert('Campaign created successfully! It will be reviewed before going live.');
+    // feedback: campaign created (show toast) will be implemented with backend
   };
 
   const isStepValid = () => {
@@ -231,6 +230,8 @@ export default function CreateCampaignPage() {
                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors">
                     {formData.bannerImage ? (
                       <div className="space-y-4">
+                        {/* preview may be a data URL from FileReader; next/image can't be used for ephemeral previews */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={formData.bannerImage}
                           alt="Banner preview"
@@ -273,6 +274,8 @@ export default function CreateCampaignPage() {
                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors">
                     {formData.frameImage ? (
                       <div className="space-y-4">
+                        {/* preview may be a data URL from FileReader; next/image can't be used for ephemeral previews */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={formData.frameImage}
                           alt="Frame preview"
@@ -361,11 +364,15 @@ export default function CreateCampaignPage() {
                 <div className="bg-white rounded-lg p-4 border border-gray-200">
                   <div className="flex items-start space-x-4">
                     {formData.bannerImage && (
-                      <img
-                        src={formData.bannerImage}
-                        alt="Campaign banner"
-                        className="w-24 h-16 object-cover rounded-lg"
-                      />
+                      <>
+                        {/* preview may be a data URL from FileReader; next/image can't be used for ephemeral previews */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={formData.bannerImage}
+                          alt="Campaign banner"
+                          className="w-24 h-16 object-cover rounded-lg"
+                        />
+                      </>
                     )}
                     <div className="flex-1">
                       <h4 className="font-semibold text-gray-900">{formData.title || 'Campaign Title'}</h4>

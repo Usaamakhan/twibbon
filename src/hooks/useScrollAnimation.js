@@ -35,13 +35,14 @@ export function useScrollAnimation(options = {}) {
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const node = ref.current;
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, [hasAnimated, defaultOptions.threshold, defaultOptions.rootMargin, defaultOptions.triggerOnce]);
@@ -56,27 +57,32 @@ export function useScrollAnimation(options = {}) {
  * @returns {Array} Array of [ref, isVisible] pairs
  */
 export function useStaggeredAnimation(count, delay = 100) {
-  const [refs, setRefs] = useState([]);
-  const [visibleStates, setVisibleStates] = useState([]);
+  // Use a single mutable ref to hold element nodes. We'll expose callback refs
+  // to allow consumers to attach DOM nodes without calling hooks inside loops.
+  const elementsRef = useRef([]);
+  const [visibleStates, setVisibleStates] = useState(() => Array(count).fill(false));
 
+  // Ensure visibleStates length tracks count
   useEffect(() => {
-    const newRefs = Array.from({ length: count }, () => useRef(null));
-    const newStates = Array.from({ length: count }, () => false);
-    
-    setRefs(newRefs);
-    setVisibleStates(newStates);
+    setVisibleStates(prev => (prev.length === count ? prev : Array(count).fill(false)));
+    // trim stored element refs if count shrinks
+    elementsRef.current = elementsRef.current.slice(0, count);
   }, [count]);
 
   useEffect(() => {
-    if (refs.length === 0) return;
+    if (count === 0) return;
 
-    const observers = refs.map((ref, index) => {
+    const observers = [];
+
+    elementsRef.current.forEach((el, index) => {
+      if (!el) return;
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             setTimeout(() => {
               setVisibleStates(prev => {
-                const newStates = [...prev];
+                const newStates = prev.slice();
                 newStates[index] = true;
                 return newStates;
               });
@@ -86,17 +92,20 @@ export function useStaggeredAnimation(count, delay = 100) {
         { threshold: 0.1, rootMargin: '50px' }
       );
 
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-
-      return observer;
+      observer.observe(el);
+      observers.push(observer);
     });
 
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, [refs, delay]);
+  }, [count, delay]);
 
-  return refs.map((ref, index) => [ref, visibleStates[index]]);
+  // Return a list of callback refs and visibility state for each index
+  return Array.from({ length: count }, (_, i) => [
+    (el) => {
+      elementsRef.current[i] = el;
+    },
+    visibleStates[i]
+  ]);
 }
