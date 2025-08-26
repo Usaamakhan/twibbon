@@ -5,6 +5,9 @@ import { useState, useEffect, useRef } from 'react';
 export default function StatCounter({ 
   value, 
   label, 
+  icon,
+  gradient = 'from-blue-500 to-purple-500',
+  bgColor = 'bg-blue-50',
   duration = 2000, 
   delay = 0 
 }) {
@@ -96,26 +99,43 @@ export default function StatCounter({
   return (
     <div 
       ref={counterRef}
-      className="stat-card animate-fade-in card-hover-scale interactive-element shadow-sm-enhanced radius-lg backdrop-blur-refined"
+      className={`stat-card-enhanced group ${bgColor} hover:bg-opacity-80 animate-fade-in interactive-element`}
       style={{ 
         animationDelay: `${delay / 1000}s`,
         animationFillMode: 'both'
       }}
     >
-      <div className="stat-number gradient-text-blue">
+      {/* Icon */}
+      {icon && (
+        <div className={`stat-icon bg-gradient-to-br ${gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+          {icon}
+        </div>
+      )}
+      
+      {/* Number */}
+      <div className="stat-number-enhanced group-hover:scale-105 transition-transform duration-300">
         {formatNumber(count, value)}
       </div>
-      <div className="stat-label text-refined-secondary">{label}</div>
       
-      {/* Decorative background element */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
+      {/* Label */}
+      <div className="stat-label-enhanced group-hover:text-gray-800 transition-colors duration-300">{label}</div>
+      
+      {/* Progress bar */}
+      <div className="stat-progress-container">
         <div 
-          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500"
+          className={`stat-progress-bar bg-gradient-to-r ${gradient}`}
           style={{
-            background: `radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 70%)`
+            width: `${hasAnimated ? '100%' : '0%'}`,
+            transitionDelay: `${delay}ms`
           }}
         />
       </div>
+      
+      {/* Hover overlay effect */}
+      <div className="absolute inset-0 bg-white bg-opacity-0 group-hover:bg-opacity-10 rounded-xl transition-all duration-300 pointer-events-none"></div>
+      
+      {/* Floating decoration */}
+      <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:animate-pulse"></div>
     </div>
   );
 }

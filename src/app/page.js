@@ -16,10 +16,50 @@ export default function HomePage() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const stats = [
-    { value: '50K+', label: 'Active Campaigns' },
-    { value: '2M+', label: 'Frames Created' },
-    { value: '100K+', label: 'Happy Users' },
-    { value: '150+', label: 'Countries' }
+    { 
+      value: '50K+', 
+      label: 'Active Campaigns',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        </svg>
+      ),
+      gradient: 'from-blue-500 to-purple-500',
+      bgColor: 'bg-blue-50'
+    },
+    { 
+      value: '2M+', 
+      label: 'Frames Created',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+      gradient: 'from-green-500 to-teal-500',
+      bgColor: 'bg-green-50'
+    },
+    { 
+      value: '100K+', 
+      label: 'Happy Users',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+        </svg>
+      ),
+      gradient: 'from-purple-500 to-pink-500',
+      bgColor: 'bg-purple-50'
+    },
+    { 
+      value: '150+', 
+      label: 'Countries',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      gradient: 'from-orange-500 to-red-500',
+      bgColor: 'bg-orange-50'
+    }
   ];
 
 const campaigns = [
@@ -281,24 +321,52 @@ const campaigns = [
 
   const features = [
     {
-      icon: '🎨',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+        </svg>
+      ),
       title: 'Easy Design Tools',
-      description: 'Create stunning frames with our intuitive editor in minutes'
+      description: 'Create stunning frames with our intuitive editor in minutes',
+      gradient: 'from-purple-500 to-pink-500',
+      bgColor: 'bg-purple-50',
+      hoverBg: 'hover:bg-purple-100'
     },
     {
-      icon: '📱',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      ),
       title: 'Social Media Ready',
-      description: 'Optimized for all major social platforms with one-click sharing'
+      description: 'Optimized for all major social platforms with one-click sharing',
+      gradient: 'from-blue-500 to-cyan-500',
+      bgColor: 'bg-blue-50',
+      hoverBg: 'hover:bg-blue-100'
     },
     {
-      icon: '📊',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
       title: 'Track Impact',
-      description: 'Monitor your campaign reach with real-time analytics'
+      description: 'Monitor your campaign reach with real-time analytics',
+      gradient: 'from-green-500 to-emerald-500',
+      bgColor: 'bg-green-50',
+      hoverBg: 'hover:bg-green-100'
     },
     {
-      icon: '🌍',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
       title: 'Global Community',
-      description: 'Join millions making a difference worldwide'
+      description: 'Join millions making a difference worldwide',
+      gradient: 'from-orange-500 to-red-500',
+      bgColor: 'bg-orange-50',
+      hoverBg: 'hover:bg-orange-100'
     }
   ];
 
@@ -395,14 +463,33 @@ const campaigns = [
       </section>
 
       {/* Stats Section */}
-      <section id="stats-section" className="py-16 bg-white">
-        <div className="container-custom">
+      <section id="stats-section" className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-br from-green-100 to-teal-100 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container-custom relative z-10">
+          {/* Section header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Trusted by Millions
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Join our growing community of changemakers creating impact worldwide
+            </p>
+          </div>
+          
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <StatCounter
                 key={index}
                 value={stat.value}
                 label={stat.label}
+                icon={stat.icon}
+                gradient={stat.gradient}
+                bgColor={stat.bgColor}
                 duration={2000}
                 delay={index * 200}
               />
@@ -411,9 +498,17 @@ const campaigns = [
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+
       {/* Popular Campaigns Section */}
-      <section id="campaigns-section" className="section bg-background-secondary">
-        <div className="container-custom">
+      <section id="campaigns-section" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container-custom relative z-10">
           <h2 className="section-title">Popular Campaigns</h2>
           <p className="section-subtitle">
             Join thousands supporting these trending causes
@@ -552,25 +647,41 @@ const campaigns = [
       </section>
 
       {/* Features Section */}
-      <section id="features-section" className="section bg-white">
-        <div className="container-custom">
-          <h2 className="section-title">Why Choose Framely?</h2>
-          <p className="section-subtitle">
-            Everything you need to create impactful campaigns
-          </p>
+      <section id="features-section" className="py-20 bg-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-0 w-72 h-72 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full blur-3xl -translate-x-1/2"></div>
+          <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-gradient-to-br from-orange-100 to-red-100 rounded-full blur-3xl translate-x-1/2"></div>
+        </div>
+        
+        <div className="container-custom relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why Choose Framely?
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Everything you need to create impactful campaigns that inspire action and drive meaningful change
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="feature-card animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`feature-card-enhanced group ${feature.bgColor} ${feature.hoverBg} animate-slide-up interactive-element`}
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="feature-icon">
+                <div className={`feature-icon-enhanced bg-gradient-to-br ${feature.gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
                   {feature.icon}
                 </div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <h3 className="feature-title-enhanced group-hover:text-gray-900 transition-colors duration-300">{feature.title}</h3>
+                <p className="feature-description-enhanced group-hover:text-gray-700 transition-colors duration-300">{feature.description}</p>
+                
+                {/* Hover overlay effect */}
+                <div className="absolute inset-0 bg-white bg-opacity-0 group-hover:bg-opacity-10 rounded-xl transition-all duration-300 pointer-events-none"></div>
+                
+                {/* Floating decoration */}
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:animate-pulse"></div>
               </div>
             ))}
           </div>
