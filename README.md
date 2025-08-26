@@ -1,4 +1,4 @@
-# Twibbon - Campaign Frame Creator
+# Framely - Campaign Frame Creator
 
 A modern, responsive website for creating and sharing campaign frames, similar to Twibbon or Twibbonize.
 
@@ -43,11 +43,11 @@ A modern, responsive website for creating and sharing campaign frames, similar t
 
 ### 🚧 To Be Implemented
 
-- **Backend Integration**
-  - Database setup (PostgreSQL with Prisma)
-  - User authentication (NextAuth.js)
-  - File upload and storage
-  - API endpoints
+- **Firebase Integration**
+  - Firebase Firestore database setup
+  - Firebase Authentication (Email/Google/Facebook)
+  - Firebase Storage for file uploads
+  - API endpoints with Next.js route handlers
 
 - **Advanced Features**
   - Real-time campaign statistics
@@ -57,11 +57,13 @@ A modern, responsive website for creating and sharing campaign frames, similar t
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 14, React 19
-- **Styling**: Tailwind CSS
-- **Planned Backend**: Prisma ORM, PostgreSQL
-- **Planned Auth**: NextAuth.js
-- **Image Processing**: HTML5 Canvas (for frame application)
+- **Frontend**: Next.js 15.5.0, React 19.1.1, JavaScript (ES2024+)
+- **Styling**: Tailwind CSS v4.1.12 (zero-config)
+- **Database**: Firebase Firestore (NoSQL)
+- **Authentication**: Firebase Authentication
+- **Storage**: Firebase Storage
+- **Image Processing**: HTML5 Canvas API
+- **Build Tool**: Turbopack (Next.js 15 default)
 
 ## 📋 Installation
 
@@ -132,4 +134,4 @@ This project is for demonstration purposes. Please ensure you have proper licens
 
 ---
 
-**Note**: This is a frontend implementation with mock data. Backend integration with database, authentication, and file storage needs to be implemented for production use.
+**Note**: This is a frontend implementation with mock data. Firebase integration with Firestore database, authentication, and storage needs to be implemented for production use.

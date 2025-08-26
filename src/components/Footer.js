@@ -22,7 +22,7 @@ export default function Footer() {
     product: {
       title: 'Product',
       links: [
-        { name: 'Create Twibbon', href: '/create' },
+        { name: 'Create Frame', href: '/create' },
         { name: 'Explore', href: '/explore' },
         { name: 'Templates', href: '/templates' },
         { name: 'Features', href: '/features' }
@@ -128,8 +128,63 @@ export default function Footer() {
 
   return (
     <footer style={footerStyle}>
-      {/* Main Footer Content */}
+      {/* Newsletter Section */}
       <div className="container-custom" style={{ padding: '40px 20px 30px' }}>
+        <div style={{ 
+          paddingBottom: '40px',
+          borderBottom: '1px solid #374151',
+          textAlign: 'center'
+        }}>
+          <div style={{ maxWidth: '500px', margin: '0 auto' }}>
+            <h3 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '6px', fontSize: '16px' }}>
+              Subscribe to our newsletter
+            </h3>
+            <p style={{ color: '#9ca3af', fontSize: '13px', marginBottom: '14px' }}>
+              Get the latest campaigns delivered to your inbox
+            </p>
+            <form style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                style={{
+                  flex: 1,
+                  maxWidth: '280px',
+                  padding: '7px 12px',
+                  backgroundColor: '#374151',
+                  border: '1px solid #4b5563',
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '13px',
+                  outline: 'none'
+                }}
+                onFocus={(e) => e.currentTarget.style.borderColor = '#0066ff'}
+                onBlur={(e) => e.currentTarget.style.borderColor = '#4b5563'}
+              />
+              <button
+                type="submit"
+                style={{
+                  padding: '7px 20px',
+                  backgroundColor: '#0066ff',
+                  color: '#ffffff',
+                  borderRadius: '6px',
+                  fontWeight: '600',
+                  fontSize: '13px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0052cc'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0066ff'}
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="container-custom" style={{ padding: '30px 20px 30px' }}>
         {/* Top Section - Logo and Link Sections */}
         <div style={{ 
           paddingBottom: '30px',
@@ -154,9 +209,9 @@ export default function Footer() {
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>T</span>
+                    <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>F</span>
                   </div>
-                  <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
+                  <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Framely</span>
                 </Link>
                 <p style={{ color: '#9ca3af', fontSize: '13px', marginTop: '8px', maxWidth: '200px', lineHeight: '1.5' }}>
                   Create and share campaign frames to unite communities.
@@ -251,9 +306,9 @@ export default function Footer() {
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>T</span>
+                    <span style={{ color: 'white', fontWeight: 'bold', fontSize: '16px' }}>F</span>
                   </div>
-                  <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Twibbonize</span>
+                  <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>Framely</span>
                 </Link>
 
                 {/* Social and Apps */}
@@ -326,59 +381,6 @@ export default function Footer() {
           )}
         </div>
 
-        {/* Newsletter Section */}
-        <div style={{ 
-          paddingTop: '30px',
-          paddingBottom: '30px',
-          borderBottom: '1px solid #374151',
-          textAlign: 'center'
-        }}>
-          <div style={{ maxWidth: '500px', margin: '0 auto' }}>
-            <h3 style={{ color: '#ffffff', fontWeight: '600', marginBottom: '6px', fontSize: '16px' }}>
-              Subscribe to our newsletter
-            </h3>
-            <p style={{ color: '#9ca3af', fontSize: '13px', marginBottom: '14px' }}>
-              Get the latest campaigns delivered to your inbox
-            </p>
-            <form style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                style={{
-                  flex: 1,
-                  maxWidth: '280px',
-                  padding: '7px 12px',
-                  backgroundColor: '#374151',
-                  border: '1px solid #4b5563',
-                  borderRadius: '6px',
-                  color: '#ffffff',
-                  fontSize: '13px',
-                  outline: 'none'
-                }}
-                onFocus={(e) => e.currentTarget.style.borderColor = '#0066ff'}
-                onBlur={(e) => e.currentTarget.style.borderColor = '#4b5563'}
-              />
-              <button
-                type="submit"
-                style={{
-                  padding: '7px 20px',
-                  backgroundColor: '#0066ff',
-                  color: '#ffffff',
-                  borderRadius: '6px',
-                  fontWeight: '600',
-                  fontSize: '13px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.2s'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0052cc'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0066ff'}
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
 
         {/* Bottom Bar */}
         <div style={{ 
@@ -391,7 +393,7 @@ export default function Footer() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
             <p style={{ color: '#9ca3af', fontSize: '12px', margin: 0 }}>
-              © {currentYear} Twibbonize. All rights reserved.
+              © {currentYear} Framely. All rights reserved.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Link 

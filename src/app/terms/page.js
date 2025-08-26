@@ -15,7 +15,7 @@ export default function TermsPage() {
               Terms of Service
             </h1>
             <p className="text-xl text-gray-600">
-              Terms and conditions for using Twibbon
+              Terms and conditions for using Framely
             </p>
           </div>
           

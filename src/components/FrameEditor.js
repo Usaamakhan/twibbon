@@ -164,7 +164,7 @@ export default function FrameEditor({ campaign, onClose }) {
         <div className="p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Create Your Twibbon</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Create Your Frame</h2>
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600 transition-colors"

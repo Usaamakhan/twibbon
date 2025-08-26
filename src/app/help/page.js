@@ -65,7 +65,7 @@ export default function HelpPage() {
 
   const faqs = [
     {
-      question: 'How do I create a Twibbon campaign?',
+      question: 'How do I create a Framely campaign?',
       answer: 'Creating a campaign is easy! Click on "Create Campaign" in the navigation, upload your frame design, add campaign details like title and description, and publish. Your campaign will be live immediately.'
     },
     {
@@ -73,7 +73,7 @@ export default function HelpPage() {
       answer: 'We support PNG, JPG, and GIF formats. For best results, use PNG with transparent backgrounds for frame overlays. Images should be at least 1080x1080 pixels.'
     },
     {
-      question: 'Is Twibbon free to use?',
+      question: 'Is Framely free to use?',
       answer: 'Yes! Basic features are completely free. We also offer premium plans with advanced analytics, custom branding, and priority support for professional creators.'
     },
     {

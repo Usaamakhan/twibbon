@@ -15,7 +15,7 @@ export default function FeaturesPage() {
               Features
             </h1>
             <p className="text-xl text-gray-600">
-              Explore all the powerful features of Twibbon
+              Explore all the powerful features of Framely
             </p>
           </div>
           

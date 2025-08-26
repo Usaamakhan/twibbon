@@ -15,7 +15,7 @@ export default function ApiPage() {
               API Documentation
             </h1>
             <p className="text-xl text-gray-600">
-              Integrate Twibbon into your applications
+              Integrate Framely into your applications
             </p>
           </div>
           

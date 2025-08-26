@@ -13,7 +13,7 @@ export default function AboutPage() {
   ];
 
   const milestones = [
-    { year: '2020', event: 'Twibbon was founded', icon: '🚀' },
+    { year: '2020', event: 'Framely was founded', icon: '🚀' },
     { year: '2021', event: 'Reached 10K active users', icon: '🎯' },
     { year: '2022', event: 'Launched mobile apps', icon: '📱' },
     { year: '2023', event: 'Expanded globally to 150+ countries', icon: '🌍' },
@@ -51,7 +51,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            About Twibbon
+            About Framely
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We're on a mission to empower individuals and organizations to create 
@@ -65,14 +65,14 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
               <p className="text-gray-600 mb-6">
-                Twibbon was born from the belief that everyone should have the tools to 
+                Framely was born from the belief that everyone should have the tools to 
                 amplify their voice and support causes they care about. We provide a platform 
                 that makes it simple to create, share, and participate in visual campaigns 
                 that drive real change.
               </p>
               <p className="text-gray-600">
                 From environmental movements to social justice campaigns, from celebrating 
-                achievements to raising awareness, Twibbon helps millions of people show 
+                achievements to raising awareness, Framely helps millions of people show 
                 their support and unite for causes that matter.
               </p>
             </div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
         <div className="bg-gradient-to-r from-primary-600 to-purple-600 rounded-2xl p-12 text-white text-center">
           <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Whether you're a creator, activist, or supporter, there's a place for you in the Twibbon community.
+            Whether you're a creator, activist, or supporter, there's a place for you in the Framely community.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

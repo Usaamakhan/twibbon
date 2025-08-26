@@ -13,10 +13,10 @@ export default function Header() {
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-primary-color rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">T</span>
+                <span className="text-white font-bold text-xl">F</span>
               </div>
               <span className="text-xl font-bold text-gray-900">
-                Twibbonize
+                Framely
               </span>
             </Link>
 
@@ -58,16 +58,16 @@ export default function Header() {
                 borderRadius: '24px'
               }}
             >
-              Create Twibbon
+              Create Frame
             </Link>
           </div>
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="md:hidden p-2 hover:bg-gray-100 radius-lg transition-colors interactive-element"
           >
             <svg
-              className="h-6 w-6 text-gray-700"
+              className={`h-6 w-6 text-gray-700 transition-transform duration-300 ${isMenuOpen ? 'rotate-90 icon-hover-spin' : 'icon-hover-bounce'}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -134,7 +134,7 @@ export default function Header() {
                     borderRadius: '24px'
                   }}
                 >
-                  Create Twibbon
+                  Create Frame
                 </Link>
               </div>
             </div>

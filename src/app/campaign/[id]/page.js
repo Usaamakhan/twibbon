@@ -237,7 +237,7 @@ export default function CampaignDetailPage() {
                 onClick={() => setShowEditor(true)}
                 className="w-full btn-primary mb-4"
               >
-                Create My Twibbon
+                Create My Frame
               </button>
 
               <div className="text-center">
