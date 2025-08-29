@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request, { params }) {
-  const { dimensions } = params;
+  const { dimensions } = await params;
   
   // Parse dimensions (e.g., "400/300" or "300")
   const [width, height] = dimensions.join('/').split('/').map(Number);

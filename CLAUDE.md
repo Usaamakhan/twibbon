@@ -76,6 +76,72 @@ npm run build   # Build and check for errors
 - Implement proper loading and error states
 - Follow accessibility best practices
 
+### Component Styling Rules ⭐ **UPDATED**
+**CRITICAL**: Components must have separated structure with component and styling in different files.
+
+#### **Component Directory Structure:**
+```
+/components/
+  /Header/
+    - Header.js          (Component logic)
+    - Header.module.css  (Component styles)
+    - index.js           (Export file)
+```
+
+#### **Styling Guidelines:**
+- **✅ DO**: Use CSS Modules for component-specific styles
+- **✅ DO**: Separate component logic and styling into different files
+- **✅ DO**: Use semantic CSS class names (e.g., .header, .logo, .button)
+- **✅ DO**: Include hover states and responsive design in CSS modules
+- **✅ DO**: Use CSS custom properties for consistency
+- **❌ DON'T**: Mix multiple styling approaches in one component
+- **❌ DON'T**: Use inline styles (except for truly dynamic values)
+- **❌ DON'T**: Create styles in globals.css for specific components
+
+#### **Component Structure Example:**
+```jsx
+// ✅ CORRECT - Separated Structure
+// Header/Header.js
+import styles from './Header.module.css';
+
+export default function Header() {
+  return (
+    <header className={styles.header}>
+      <div className={styles.headerContent}>
+        <Link className={styles.logo}>Logo</Link>
+        <button className={styles.iconButton}>Menu</button>
+      </div>
+    </header>
+  );
+}
+```
+
+```css
+/* ✅ CORRECT - Header/Header.module.css */
+.header {
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.iconButton {
+  width: 5rem;
+  height: 5rem;
+  background-color: white;
+  border-radius: 9999px;
+}
+
+.iconButton:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+```
+
+**Globals.css Usage:**
+- Only CSS custom properties (colors, spacing, shadows)
+- Only base element styles (html, body, headings)
+- NO component-specific classes
+
 ### Performance Considerations
 - Implement lazy loading for images
 - Use Next.js 15 Image component for optimization

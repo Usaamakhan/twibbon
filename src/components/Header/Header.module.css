@@ -1,0 +1,126 @@
+/* Header Component Styles */
+
+.header {
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  max-width: 72rem; /* 6xl */
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .headerContent {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Logo Styles */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+/* Actions Container */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Button Styles */
+.iconButton {
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  background-color: white;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Campaign Button */
+.campaignButton {
+  height: 3rem; /* 48px - same as icon buttons */
+  padding: 0 2rem;
+  background-color: white;
+  color: #000000;
+  font-weight: 700 !important;
+  border-radius: 9999px;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  min-width: 10rem; /* 160px minimum width */
+}
+
+.campaignButton * {
+  font-weight: 700 !important;
+}
+
+.campaignButton:hover {
+  background-color: #f9fafb;
+  text-decoration: none;
+  color: #000000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Menu Dropdown */
+.menuDropdown {
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid #f3f4f6;
+}
+
+.menuLink {
+  display: block;
+  padding: 0.75rem 0;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.menuLink:hover {
+  color: #111827;
+  text-decoration: none;
+}
+
+/* SVG Icons */
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: currentColor;
+}
