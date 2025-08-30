@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Hero from '@/components/Hero';
 import CampaignCard from '@/components/CampaignCard';
 import TopCreators from '@/components/TopCreators';
 
@@ -72,35 +73,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero-modern" style={{ marginTop: '-80px', paddingTop: '80px' }}>
-        <div className="container">
-          <div className="hero-content">
-            <h1 className="hero-title">
-              show your
-              <br />
-              <span className="hero-title-handwritten">supports</span>
-            </h1>
-            <p className="hero-subtitle">
-              Turn your passion into action; create custom images that show what you stand for and invite friends to join you
-            </p>
-            <Link href="/create" className="btn btn-primary">
-              + Start a Campaign
-            </Link>
-          </div>
-        </div>
-        
-        {/* Hero Mockups */}
-        <div className="hero-mockups">
-          <div className="absolute inset-0 flex items-center justify-center">
-            {/* Campaign frame mockups would go here */}
-            <div className="grid grid-cols-2 gap-4 transform rotate-12">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-32 h-32 bg-white rounded-lg shadow-lg"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Trending Section */}
       <section className="section-modern">
